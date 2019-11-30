@@ -1,6 +1,7 @@
 const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack') // to access built-in plugins
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     mode: 'production',
@@ -15,9 +16,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebPackPlugin({
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
             template: './src/client/views/index.html',
             filename: "./index.html"
-        })
+        }),
     ]
 }
